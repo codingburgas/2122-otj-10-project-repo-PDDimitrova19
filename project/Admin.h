@@ -19,4 +19,4 @@ __declspec(selectany) REPOSITORY_LIST* repos = new REPOSITORY_LIST;
 void addRepo(REPOSITORY);
 REPOSITORY_LIST* getProjectRepos();
 void removeProjectRepos();
-void initialiseEvents();
+void initialiseRepos();

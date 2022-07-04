@@ -210,7 +210,7 @@ namespace AmigosQuiz {
 			this->panel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F));
 			this->panel1->Location = System::Drawing::Point(0, 1);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(347, 532);
+			this->panel1->Size = System::Drawing::Size(347, 510);
 			this->panel1->TabIndex = 1;
 			// 
 			// button4
@@ -675,6 +675,7 @@ namespace AmigosQuiz {
 			this->textBox10->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox10->Size = System::Drawing::Size(323, 85);
 			this->textBox10->TabIndex = 14;
+			this->textBox10->TextChanged += gcnew System::EventHandler(this, &EventForm::textBox10_TextChanged);
 			// 
 			// textBox9
 			// 
@@ -851,29 +852,29 @@ namespace AmigosQuiz {
 	}
 	private: System::Void EventForm_Load(System::Object^ sender, System::EventArgs^ e) {
 
-		initialiseEvents();
+		initialiseRepos();
 		HideAdminTextBoxes();
 		std::string name = currentAccount.firstName + " " + currentAccount.lastName;
 		String^ str2 = gcnew String(name.c_str());
 		label12->Text = str2;
 		button4->Hide();
-	}
-	private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
-		REPOSITORY_LIST* firstKingdomEvents = getProjectRepos();
-		textBox5->Text = gcnew String(std::to_string(firstKingdomEvents->repo.index).c_str());
-		textBox6->Text = gcnew String(firstKingdomEvents->repo.name.c_str());
-		textBox7->Text = gcnew String(firstKingdomEvents->repo.description.c_str());
 
-		firstKingdomEvents = firstKingdomEvents->next;
-		textBox8->Text = gcnew String(std::to_string(firstKingdomEvents->repo.index).c_str());
-		textBox9->Text = gcnew String(firstKingdomEvents->repo.name.c_str());
-		textBox10->Text = gcnew String(firstKingdomEvents->repo.description.c_str());
+		REPOSITORY_LIST* repositories = getProjectRepos();
+		textBox5->Text = gcnew String(std::to_string(repositories->repo.index).c_str());
+		textBox6->Text = gcnew String(repositories->repo.name.c_str());
+		textBox7->Text = gcnew String(repositories->repo.description.c_str());
 
-		firstKingdomEvents = firstKingdomEvents->next;
-		textBox11->Text = gcnew String(std::to_string(firstKingdomEvents->repo.index).c_str());
-		textBox12->Text = gcnew String(firstKingdomEvents->repo.name.c_str());
-		textBox13->Text = gcnew String(firstKingdomEvents->repo.description.c_str());
+		repositories = repositories->next;
+		textBox8->Text = gcnew String(std::to_string(repositories->repo.index).c_str());
+		textBox9->Text = gcnew String(repositories->repo.name.c_str());
+		textBox10->Text = gcnew String(repositories->repo.description.c_str());
+
+		repositories = repositories->next;
+		textBox11->Text = gcnew String(std::to_string(repositories->repo.index).c_str());
+		textBox12->Text = gcnew String(repositories->repo.name.c_str());
+		textBox13->Text = gcnew String(repositories->repo.description.c_str());
 	}
+
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		ShowAdminTextBoxes();
@@ -915,39 +916,41 @@ namespace AmigosQuiz {
 		button4->Hide();
 		button3->Show();
 
-		REPOSITORY ev1 =
+		REPOSITORY repo1 =
 		{
 			atoi(marshal_as<std::string>(textBox5->Text).c_str()),
 			marshal_as<std::string>(textBox6->Text),
 			marshal_as<std::string>(textBox7->Text)
 		};
 
-		REPOSITORY ev2 =
+		REPOSITORY repo2 =
 		{
 			atoi(marshal_as<std::string>(textBox8->Text).c_str()),
 			marshal_as<std::string>(textBox9->Text),
 			marshal_as<std::string>(textBox10->Text)
 		};
 
-		REPOSITORY ev3 =
+		REPOSITORY repo3 =
 		{
 			atoi(marshal_as<std::string>(textBox11->Text).c_str()),
 			marshal_as<std::string>(textBox12->Text),
 			marshal_as<std::string>(textBox13->Text)
 		};
 
-		if (ev1.index <= 1018 && ev2.index <= 1018 && ev3.index <= 1018) {
+		if (repo1.index <= 1000 && repo2.index <= 1000 && repo3.index <= 1000) {
 			removeProjectRepos();
 			removeProjectRepos();
 			removeProjectRepos();
 		}
 
-		addRepo(ev1);
-		addRepo(ev2);
-		addRepo(ev3);
+		addRepo(repo1);
+		addRepo(repo2);
+		addRepo(repo3);
 
 		HideAdminTextBoxes();
 		button4->Hide();
 	}  
+private: System::Void textBox10_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

@@ -99,6 +99,6 @@ ACCOUNT searchAccount(std::string email, std::string password){
 
 // Function for initializing accounts
 void initialiseAccounts() {
-	addAccount({});
+	addAccount({ 1, "admin1", "admin" , "admin1@cod.com", "Password1"});
 	addAccount({});
 }
