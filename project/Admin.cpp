@@ -45,6 +45,6 @@ void removeProjectRepos()
 // Function for initializing events
 void initialiseRepos() {
 	addRepo({ 13, "PIPetkova19/Xenon", "We are team Xenon! We can take instructions from all levels and build up good working relationships. Our task is/was to create a C++ Maze Game." });
-	addRepo({ 1, "text", "text" });
+	addRepo({ 21, "VYKostova19/AZ - 3", "The main goal of our project is to present C++ Maze Game. We have created an awesome algorithm and an easy to use and understand styled UI." });
 	addRepo({ 1, "text", "text" });
 }
