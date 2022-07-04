@@ -1,14 +1,16 @@
 #pragma once
 #include <iostream>
 
-// Struct for event
+// Struct for repository
+
 struct REPOSITORY {
 	int index = 0;
 	std::string name = "";
 	std::string description = "";
 };
 
-// Struct for event list
+// Struct for repository list
+
 struct REPOSITORY_LIST {
 	REPOSITORY repo;
 	struct REPOSITORY_LIST* next = NULL;
