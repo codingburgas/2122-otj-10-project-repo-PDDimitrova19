@@ -2,6 +2,7 @@
 #include "Admin.h"
 
 // Function for adding events to the linked list
+
 void addRepo(REPOSITORY repo)
 {
 	REPOSITORY_LIST* temp = new REPOSITORY_LIST();
@@ -9,6 +10,8 @@ void addRepo(REPOSITORY repo)
 	temp->next = repos;
 	repos = temp;
 }
+
+// Get project repositories
 
 REPOSITORY_LIST* getProjectRepos() {
 	REPOSITORY_LIST* temp1 = repos;
@@ -22,6 +25,8 @@ REPOSITORY_LIST* getProjectRepos() {
 	}
 	return repositories;
 }
+
+// Remove project repositories
 
 void removeProjectRepos()
 {
@@ -39,6 +44,7 @@ void removeProjectRepos()
 
 
 // Function for initializing events
+
 void initialiseRepos() {
 	addRepo({ 13, "PIPetkova19/Xenon", "We are team Xenon! We can take instructions from all levels and build up good working relationships. Our task is/was to create a C++ Maze Game." });
 	addRepo({ 21, "VYKostova19/AZ - 3", "The main goal of our project is to present C++ Maze Game. We have created an awesome algorithm and an easy to use and understand styled UI." });
